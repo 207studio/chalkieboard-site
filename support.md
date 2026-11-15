@@ -20,11 +20,11 @@ Chalkieboard is a lesson board for teachers who teach from an iPad.
 - **A PowerPoint animation looks different.** Chalkieboard re-creates PowerPoint animations as closely as it can. Tell us which slide differs when you contact support.
 - **The classroom display has no status bar.** This is intentional; the board is sent to the classroom display.
 - **Cancel a subscription.** Use iPad Settings ▸ Apple Account ▸ Subscriptions or [Apple's subscription page](https://apps.apple.com/account/subscriptions). [Apple handles refunds](https://reportaproblem.apple.com/).
-- **Changed iPads or reinstalled the app?** Use Restore Purchase on the subscription screen in the app.
+- **Changed iPads or reinstalled the app?** Use Restore Purchases on the subscription screen in the app.
 
 ## Your data
 
-Boards, lesson files, and handwriting stay on your iPad and in your own iCloud. 207 Studio does not collect or see them.
+Annotations and board notes stay on your iPad. Only lesson materials and their organization information sync with your own iCloud. 207 Studio does not collect or see them.
 
 - [Privacy Policy](/legal/privacy/)
 - [Terms of Use](/legal/terms/)

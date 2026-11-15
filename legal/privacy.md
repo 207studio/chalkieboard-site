@@ -9,7 +9,7 @@ permalink: /legal/privacy/
 
 한국어: [개인정보처리방침](/ko/legal/privacy/)
 
-**Effective date: October 6, 2026**
+**Effective date: October 12, 2026**
 
 Chalkieboard is an iPad tool for teachers and presenters. It does not provide student
 accounts or ask teachers to register student identities. Lesson materials, handwriting
@@ -24,14 +24,12 @@ processing and the optional sharing described below.
 servers.** They are kept on your device and, when you choose to use it, in your own iCloud.
 The developer cannot access them.
 
-**The version with a Use Jev setting keeps Jev off by default, including after an update
-with a previously saved TypeSafe key.** The app's Voice Commands use Apple's on-device
-speech recognition. With Jev off, supported commands are interpreted on this iPad and
-no connection checks, connection prewarming or interpretation requests go to TypeSafe.
-If you explicitly consent, turn on Jev and provide your own TypeSafe key, selected command
-transcripts and screen context are sent to TypeSafe AI in the United States (Section 5.2).
+**The version with a Use Decisions setting keeps Decisions off by default.** The app uses
+Apple's on-device speech recognition and local rules for supported commands. Only after
+new consent and a separately entered OpenAI voice key may selected command text and screen
+context go to OpenAI (Section 5.2). Existing TypeSafe keys and consent are unused.
 
-Build `202610061343` does not include Jev. Earlier TypeSafe-enabled TestFlight builds have
+Build `202610061343` does not include the legacy voice service. Earlier TypeSafe-enabled TestFlight builds have
 different controls and may also send optional student speech context (Section 5.3).
 Updating this policy does not change the behavior of an earlier installed build.
 
@@ -47,12 +45,12 @@ Updating this policy does not change the behavior of an earlier installed build.
 | App settings (board color, pens, fonts) | On the device | No |
 | Subscription record (Chalkieboard Pro) | Apple's servers (App Store) | No (handled by Apple) |
 | The app's Voice Commands audio | Turned into text on the device and not stored | No |
-| Voice Commands transcribed text and selected screen context | On the device with Jev off; sent to TypeSafe with consent and Jev on (Section 5.2). Earlier builds: Section 5.3 | No |
+| Voice Commands transcribed text and selected screen context | On the device with Decisions off; sent to OpenAI with new consent and Decisions on (Section 5.2). Earlier builds: Section 5.3 | No |
 | System Siri requests | Handled by Apple under your Siri settings and Apple's policies; the app receives the requested action | No (handled by Apple) |
-| Your TypeSafe API key, including a previously stored key | In this device's Keychain; used to authenticate TypeSafe requests only with Jev on. Turning Jev off keeps the key | No |
+| Your OpenAI voice API key | Separate device Keychain slot; used only with Decisions on. Earlier TypeSafe keys are preserved and unused | No |
 | The teacher's voice feature values | On the device (Keychain) | No |
 | Classroom scene estimate (scene name, time of change) | In device memory — erased when the class ends. 7 days if 'Keep Class Timeline' is on | No |
-| Earlier builds' voice decision log | Existing device and personal iCloud Drive files are preserved; the current version does not resume writing or automatic cleanup (Section 8) | No |
+| Earlier builds' voice decision log | No new entries; retention cleanup and deletion controls remain available (Section 8) | No |
 
 **There are no Chalkieboard accounts.** Chalkieboard has no sign-up and does not ask you
 to register names, email addresses, phone numbers, school names or student identities.
@@ -86,17 +84,17 @@ own policies.
   page and pen/eraser actions to Siri and Shortcuts. When invoked through Siri, speech
   processing follows your Siri settings and Apple's policies. The app receives the action
   to perform. These system entry points are separate from the app's microphone-based
-  Voice Commands and do not use Jev (Section 5.1).
+  Voice Commands and do not use Decisions (Section 5.1).
 - **Classroom scene estimation** — During a class with Voice Commands on, the app examines
   classroom sound **only on this iPad** to guess what kind of scene the class is in, such
   as explanation, group activity or presentations. It uses only numbers, such as how many
   voices there are, the volume, and a score for whether it is the teacher's voice. Sound
   is not sent off the device. This guess is used only to carry out voice commands more
   carefully. The scene guess (scene names and probabilities) is not sent off the device.
-  With Jev on, separate classroom facts such as sound-source labels, loudness and segment
+  With Decisions on, separate classroom facts such as sound-source labels, loudness and segment
   timing may be sent with a command request (Section 5.2). These facts contain no audio
-  or transcript text. Extra recent student context and per-voice transcripts are absent
-  from the current version; their use in earlier builds is described in Section 5.3.
+  or transcript text. A separate, default-off choice can also send recent speech
+  and per-voice context to OpenAI (Section 5.2); earlier builds are described in Section 5.3.
 
 ---
 
@@ -118,7 +116,7 @@ Chalkieboard does not separately pass user data to AdMob for advertising purpose
 
 ---
 
-## 5. Voice Commands, optional Jev and system actions
+## 5. Voice Commands, optional Decisions and system actions
 
 ### 5.1. Apple speech and commands on this iPad
 
@@ -130,11 +128,11 @@ support depends on the device, OS and Apple's language assets; downloading an as
 need internet. If on-device recognition is unavailable, the app does not silently switch
 to server speech recognition.
 
-With Jev off, supported page/tool commands, supported Korean polite expressions, uniquely
+With Decisions off, supported page/tool commands, supported Korean polite expressions, uniquely
 matched material names, explicit English/Korean dictation or reveal commands and uniquely
 matched visible app-button names are handled on this iPad. This is a defined set of commands;
 it does not promise to understand every sentence. Highlighting selected text and more
-flexible requests can use Jev when you choose to enable it.
+flexible requests can use Decisions when you choose to enable it.
 
 The separate App Intents actions turn Voice Commands on/off, open a lesson, turn to the
 next/previous page or select pen/eraser. They can be invoked through Shortcuts or system
@@ -142,78 +140,85 @@ controls. You can also configure Apple's Vocal Shortcuts in iPad accessibility s
 for a spoken phrase without “Hey Siri”; this is a separate system feature you set up.
 When you use Siri, Apple processes that request according to your Siri settings and policies.
 Chalkieboard receives the requested action, does not record Siri audio and does not use
-TypeSafe for those actions.
+Decisions for those actions.
 
-### 5.2. Optional Jev in the version with a Use Jev setting
+### 5.2. Optional OpenAI Decisions
 
-Jev is off by default, even with an API key stored by an earlier version. Saving a key does
-not enable Jev or check the connection. Before enabling Jev for the first time, the app
-asks for explicit permission to share the listed command text and context with TypeSafe AI
-in the United States. If this disclosure changes, permission is required for the new version.
-You need your own TypeSafe API key, an internet connection and available TypeSafe credits.
-Interpretation costs are charged to that key's credits, separately from Chalkieboard Pro.
+Decisions is off by default. This update does not inherit TypeSafe keys, the legacy voice-service
+setting or its consent. Turning Decisions on requires accepting the new disclosure;
+transmission also requires a separately entered OpenAI voice API key. Saving a key does not enable Decisions or
+send a connection check. An internet connection and available OpenAI API billing are
+required; those charges are separate from Chalkieboard Pro.
 
-With Jev on, command candidates admitted by the app may be sent for interpretation:
+With Decisions on, command candidates admitted by the app may include:
 
 - **Command transcripts and alternative transcriptions** — Speech after the app's wake
   word, short follow-ups within 8 seconds of a voice action, or speech without the wake word
-  that matches a material, tool, button, function, page number or time. **Personal names in
-  that speech can be sent as written.** Microphone commands may come from students or other
-  people when teacher verification is off. Verification does not perfectly identify a
-  speaker, and interpretation and execution checks are separate; transmission is not
-  guaranteed to contain only the teacher's words.
-- **Selected screen context** — Material, tool and button names; the current material/page
-  and tool; matching page text and marks on it; source, normalized screen position and
-  matching spans of observed text; recent voice actions and state of visible app controls.
-  **Personal information in these names or text can be included.** The app sends selected
-  text/context, not the full document file, photo or a recording of the board screen.
-- **Classroom sound facts** — App-produced labels/numbers for the sound source (teacher,
-  student, several voices, silence or app media), whether a student voice preceded the
-  command, loudness, an announced or manually chosen activity and elapsed time, and the
-  order/timing of voice segments. App-produced activity/floor labels from earlier judgments
-  and their elapsed times may also be included. These facts contain no audio or transcript text.
-- **Web context, only with a separate choice** — Web Page Voice Control is off by default,
-  including after updating from an older enabled setting. If you turn it on as well as Jev,
-  the current web page title, button/input names and kinds (up to 253, ranked by overlap with
-  the speech), permitted action types and matching visible page text can be sent. They may
-  contain student names or other personal information. Opening a website by itself does
-  not enable this Jev option; websites otherwise operate under their own policies.
+  that matches a material, tool, button, function, page number or time. Personal names may
+  be included. Teacher verification is optional and imperfect; command candidates are
+  not guaranteed to contain only a teacher's words.
+- **Selected screen context** — Material, tool and button names; current material/page
+  and tool; matching page text and marks; observed text source, position and matching spans;
+  recent voice actions and visible app controls. Personal information in this text may be
+  included. The app does not send the full document, photo or board-screen recording.
+- **Classroom sound facts** — App-produced sound-source labels, loudness, segment timing
+  and known activity facts, without audio or transcript text.
+- **Web context, with a separate choice** — Web Page Voice Control remains off by default.
+  With both choices on, the current web title, offered button/input names and kinds,
+  permitted operations and matching visible text may be included. This can include names.
+  Opening a website does not enable this choice; websites have their own policies.
 
-Raw microphone audio, voice feature values and voice similarity scores are not sent to
-TypeSafe. The current version does not add recent student-speech context or per-voice
-transcript turns to requests. Activity/floor labels are separate text-free classroom facts. It does not resume
-Jev decision logging when Jev is enabled. This does not exclude a student's words or name
-from a command candidate or visible text described above.
+**Interpret Speech Beyond Command Words** is a separate, off-by-default choice.
+With Decisions on and this choice explicitly accepted, speech candidates and partial
+transcripts heard during lessons can reach OpenAI even without a known command word
+or a recent voice action. This can include ordinary student speech and personal names.
+The same API billing and OpenAI retention terms apply. Only enable this with permission
+to share everyone's speech. Only Listen After Wake Word still applies. This choice does
+not enable recent speech history or web context; those require their own choices.
+Turning it off cancels pending requests and discards late replies but cannot recall
+data already received by OpenAI. Turning Decisions off also revokes this choice.
 
-While Jev is on, the app may prepare a connection to TypeSafe. Check Connection sends a
-fixed test command. TypeSafe receives the API key for authentication and the network
-information needed to handle those requests. Turning Use Jev off stops new interpretation,
-prewarming and connection-check requests, cancels pending requests and ignores their late
-results. It keeps your key, materials and existing logs. It cannot retract data a service
-has already received. To stop microphone commands too, turn Voice Commands off.
+Raw audio, voice features and similarity scores are not sent to OpenAI. Extra recent
+student speech, per-voice transcript turns and the accumulated classroom picture are
+excluded by default, even when older preferences remain stored. They are included only
+after a separate, explicit **Use Classroom Speech Context** choice, which can be turned
+off independently. It can include at most two recent student/other transcripts from the
+past 20 seconds (160 characters each, 320 total), and up to six earlier per-voice turns
+from the past 30 seconds (160 characters each, 480 total), with session-only voice labels
+and relative timing. A current turn may add its voice label and timing without repeating
+its transcript. Earlier activity and floor estimates, their ages, and the current session's
+teacher voice label can also be included. This requires available speaker analysis for
+per-voice turns. Transcripts may contain names and other personal information. Recent
+context stays in memory on the iPad during the lesson and is cleared when the setting
+changes or the lesson closes. Turning it off cancels pending local requests and discards
+late results, but cannot recall data already received by OpenAI. A student's words or name
+can still appear in an ordinary command candidate or selected screen text even without
+this choice. This choice does not enable voice decision logging or erase earlier records.
 
-TypeSafe is the recipient of the optional text/context transfer and hosts its services in
-the United States. Its [privacy policy](https://typesafe.ai/legal/privacy-policy) states that
-it collects submitted prompts, data and other Input, may collect technical/usage information,
-and does not train or fine-tune models on Input. It retains personal data for as long as
-reasonably necessary for its services or business/commercial purposes; no fixed number of
-days is specified. TypeSafe also states that its service is not directed to children and
-that it does not knowingly collect, maintain or use personal data from children under 18.
+Preparing the local session sends no HTTP request. **Check Connection (Billed Request)**
+sends one fixed synthetic command to OpenAI. Turning Decisions off cancels pending local
+requests and discards late results; it keeps the key, materials and existing records.
+Cancellation cannot retract data already received or guarantee that the request is free.
+To stop microphone commands too, turn Voice Commands off.
 
-[TypeSafe's legal documentation](https://docs.typesafe.ai/legal) offers zero data retention
-to enterprise customers. Chalkieboard does not assume that an ordinary personal API key
-has that arrangement or promise immediate deletion. Disabling Jev is not a server-side
-deletion request; contact TypeSafe about information it has already received.
+The recipient is OpenAI through its API. OpenAI receives the request text/context, API
+key for authentication and necessary network information. Its [API data guide](https://developers.openai.com/api/docs/guides/your-data)
+says API data is not used for training by default. Default abuse-monitoring logs may retain
+customer content for up to 30 days, with exceptions. Prompt caching may retain encrypted
+key/value tensors for up to 24 hours. Zero Data Retention requires eligibility and approval and is not
+assumed for a personal key. Turning Decisions off is not a server-side deletion request.
+Account-specific processing and retention controls follow the user's OpenAI agreement.
 
 ### 5.3. Previously installed TestFlight builds
 
-Build `202610061343` excludes TypeSafe/Jev: there is no key-entry or transmission option,
+Build `202610061343` excludes TypeSafe: there is no key-entry or transmission option,
 and a previously saved key is unused for TypeSafe connections. It preserves existing keys
-and logs. It is distinct from the version with the Use Jev toggle described in Section 5.2.
+and logs. Older versions with a legacy voice-service toggle use TypeSafe after their own consent. Neither is the
+OpenAI Decisions version described in Section 5.2.
 
-Earlier TypeSafe-enabled TestFlight builds can still send the command-candidate, screen,
+Still earlier TypeSafe-enabled TestFlight builds can send the command-candidate, screen,
 web and classroom context described above while Voice Commands is on and a key is available.
-They do not have the new independent Use Jev consent control. Updating this policy does
+They do not have the new independent legacy voice-service consent control. Updating this policy does
 not disable an installed older build. To prevent its interpretation requests, avoid entering
 a key, remove any saved key in that build's settings, or turn off Voice Commands.
 
@@ -239,7 +244,7 @@ Those older builds can also have these separately enabled transcript-context fea
 
 These older features do not replace teacher verification or grant permission to execute
 commands. Raw audio and voice features remain on the device. Their optional transcript
-sharing and old logging behavior are not resumed by installing the current version.
+sharing and old logging behavior are not resumed merely by installing the current version.
 
 ---
 
@@ -248,8 +253,8 @@ sharing and old logging behavior are not resumed by installing the current versi
 Chalkieboard Pro subscriptions are made only through **App Store in-app purchase**. Apple
 handles payment information such as card numbers. Neither the app nor the developer
 receives that information. You can manage or cancel your subscription in iOS Settings ▸
-Apple Account ▸ Subscriptions. Optional Jev interpretation is charged by TypeSafe to
-your own API key; Chalkieboard does not sell TypeSafe credits or take that payment (Section 5.2).
+Apple Account ▸ Subscriptions. Optional Decisions interpretation is charged by OpenAI to
+your own API account; Chalkieboard does not sell API credits or take that payment (Section 5.2).
 
 ---
 
@@ -260,16 +265,16 @@ student names, photos or other personal information in lesson materials or board
 Those files stay on the device and, if chosen, in the teacher's iCloud. The developer
 cannot access them.
 
-With Jev off, the app sends no command transcripts or screen context to TypeSafe. With
-Jev on, a student's name or words in a command candidate, material/button name or matching
-page text may be sent to TypeSafe in the United States (Section 5.2), even though extra
-recent student context is unavailable. Web context requires its separate choice. Raw
-student audio is not sent. Earlier builds may also transmit the optional recent student
-and per-voice transcripts described in Section 5.3.
+With Decisions off, the app sends no command transcripts or screen context to OpenAI. With
+Decisions on, a student's name or words in a command candidate, material/button name or matching
+page text may be sent to OpenAI (Section 5.2), even without the separate classroom speech
+choice. That choice may additionally send the recent student and per-voice transcripts
+described in Section 5.2. Web context requires its own choice. Raw student audio is not
+sent. Earlier builds are described in Section 5.3.
 
-Use Jev only for information you are authorized to share, following your school and office
+Use Decisions only for information you are authorized to share, following your school and office
 of education's rules and applicable requirements for children's data. A teacher's consent
-to Jev does not by itself establish permission to share another person's information.
+to Decisions does not by itself establish permission to share another person's information.
 
 ---
 
@@ -277,10 +282,11 @@ to Jev does not by itself establish permission to share another person's informa
 
 - If you delete the app, the board work, materials and settings on the device are deleted
   with it.
-- **TypeSafe keys** — This update preserves a previously stored key in this device's
-  Keychain. Saving a key or turning Jev off does not enable interpretation or erase the
-  key. You can remove the key in Settings ▸ Voice Control (Beta); removing it also turns
-  Jev off and cancels pending requests. An existing key alone is not permission to send data.
+- **OpenAI voice key and old TypeSafe keys** — The OpenAI voice key has a separate Keychain
+  slot. Settings ▸ Voice Control can remove that OpenAI key, turn Decisions off and cancel
+  pending requests. Turning Decisions off alone keeps it. The update preserves older
+  TypeSafe keys without reading, copying, using or deleting them; this new control does
+  not delete those older keys. A saved key alone is not permission to transmit data.
 - **Earlier TypeSafe-enabled builds' voice decision log** — In those earlier builds,
   new entries keep only metadata: IDs, stages and types, model name,
   timing, result codes, counts, and diagnostic numbers or fixed states such as analysis
@@ -288,17 +294,18 @@ to Jev does not by itself establish permission to share another person's informa
   response bodies, audio, or voice features. If a teacher's voice is registered, though, each
   command turn's similarity score (a number comparing it with the registered voice) is also
   kept in new entries. Entries made by the previous log format
-  may still exist and may contain the original speech and interpretation results; this update
-  does not delete them. The log is kept on this device, with a copy in the `판단기록` (decision log)
+  may still exist and may contain the original speech and interpretation results; you can
+  delete them using Delete Stored Decision Logs in Settings ▸ Voice Control (Beta). The log is kept on this device, with a copy in the `판단기록` (decision log)
   folder inside the `Chalkieboard` folder of your own iCloud Drive. It is not sent to the
   developer. The log is on by default in test builds (TestFlight) and off in the App Store
   version. Once entries are older than 30 days or the log exceeds 50MB, the oldest entries are
   deleted first, copies included. You can turn it off or delete it in Settings ▸ Voice Control
   (Beta); deleting it also removes that device's copies. It is not included in device backups.
-  The current release does not create Jev decision-log entries or run their automatic
-  retention or iCloud-copy cleanup. Existing entries and copies are preserved, and
-  their management controls are absent from this release. The preceding controls and
-  retention rules describe the earlier TypeSafe-enabled builds.
+  The current release does not create the legacy voice service decision-log entries. Automatic retention and
+  deletion remain available even when Decisions is off. Cleanup only removes verified
+  records owned by this iPad; unknown files and other devices’ copies are preserved.
+  Deletion of verified iCloud copies resumes when the same account is available.
+  Cleanup does not upload retained historical logs.
 - **Class timeline** (when 'Keep Class Timeline' is on) — Only scene names and the times
   they changed are kept, for 7 days.
 - The `Chalkieboard` folder in iCloud Drive holds your files, so it remains. If you want to
@@ -314,8 +321,8 @@ Chalkieboard does not sell or rent user data. Google AdMob (Section 4), Apple se
 including iCloud, the App Store and System Siri (Sections 3, 5.1 and 6), and websites you
 choose to open handle their own services under their own policies.
 
-TypeSafe/Jev is an optional recipient only when you consent and enable Jev, as described
-in Section 5.2. Previously installed TestFlight builds have the behavior in Section 5.3.
+OpenAI Decisions is an optional recipient only after new consent and enablement
+(Section 5.2). TypeSafe applies to the older versions described in Section 5.3.
 
 ---
 
