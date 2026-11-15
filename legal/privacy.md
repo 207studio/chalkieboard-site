@@ -9,7 +9,7 @@ permalink: /legal/privacy/
 
 한국어: [개인정보처리방침](/ko/legal/privacy/)
 
-**Effective date: October 12, 2026**
+**Effective date: November 16, 2026**
 
 Chalkieboard is an iPad tool for teachers and presenters. It does not provide student
 accounts or ask teachers to register student identities. Lesson materials, handwriting
@@ -109,7 +109,8 @@ on the external display. Ads are provided by Google AdMob.
   identifier (IDFA) and does not ask for iOS App Tracking Transparency (ATT) permission.
 - Even so, AdMob processes basic technical information, such as IP address and device
   type, to show ads and prevent fraudulent clicks. Details of this processing: https://policies.google.com/technologies/partner-sites
-- Users in Europe may first see a consent form (Google UMP) before an ad is shown.
+- Chalkieboard does not show an ad consent form and does not track you. For users in the EEA, the UK and
+  Switzerland, Google serves "limited ads", which do not use personal data to personalize ads.
 - **If you subscribe to Chalkieboard Pro, class time becomes unlimited, so you do not need to watch ads.**
 
 Chalkieboard does not separately pass user data to AdMob for advertising purposes.
