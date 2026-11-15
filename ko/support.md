@@ -25,7 +25,7 @@ English: [Chalkieboard Support](/support/)
 
 ## 내 자료
 
-판서·수업 자료·손글씨는 아이패드와 선생님 본인의 iCloud에 저장됩니다. 207 Studio는 이를 수집하거나 볼 수 없습니다.
+주석·판서·손글씨는 아이패드에 보관됩니다. 수업 자료와 자료 정리·연결 정보만 선생님 본인의 iCloud와 동기화됩니다. 207 Studio는 이를 수집하거나 볼 수 없습니다.
 
 - [개인정보처리방침](/ko/legal/privacy/)
 - [이용약관](/ko/legal/terms/)

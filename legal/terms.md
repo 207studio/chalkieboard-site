@@ -30,8 +30,9 @@ your classes by timetable and lesson, and send the screen to an external display
 
 ## 3. Fees
 
-- The App is **free to download and use.** All in-class features, such as board writing,
-  PPT playback, external display output and class tools, are free.
+- The App is **free to download and use.** Standard in-class features, such as board writing,
+  PPT playback, external display output and class tools, are free within the limits below.
+  Voice Commands requires Chalkieboard Pro.
 - While you use the App for free, you can hold **up to 10** materials.
 - On the free plan, classes run on a **class time balance**. Watching one rewarded ad adds
   1 hour, and you can top up in advance to a maximum of 20 hours. Ads appear only when you
@@ -58,10 +59,11 @@ your classes by timetable and lesson, and send the screen to an external display
 
 The rights to everything you make in or bring into the App, such as board work, lesson
 materials and timetables, **belong to you.** The developer does not collect, view or use
-any of it.
+any of it. If you choose to enable the optional Decisions feature and consent to the transfer,
+selected command text and screen context are sent to OpenAI to interpret your commands.
 
-**You are responsible for keeping it.** The App stores data only on your device and in
-your iCloud, so if you lose the device or delete the App, it cannot be recovered. Please
+**You are responsible for keeping it.** The App stores your lesson files and board work
+on your device and, where supported, in your iCloud, so if you lose the device or delete the App, it cannot be recovered. Please
 keep separate copies of important materials.
 
 ---
